@@ -1,6 +1,6 @@
 import type { DatePickerProps, InputProps, DoneBarProps } from "../types";
 
-import React, { useState, useRef, useMemo } from "react";
+import React, { useState, useRef, useMemo, useEffect } from "react";
 import { Animated, Platform } from "react-native";
 import DefaultInputButton from "./InputButton";
 import DefaultDoneBar from "./DoneBar";
@@ -45,9 +45,20 @@ const DatePicker = ({
     [backdropAnimation]
   );
 
+  useEffect(() => {
+    if (value !== pickedDate) {
+      setPickedDate(value || new Date());
+    }
+  }, [value]);
+
   const handleiOSDateChange = (_: any, newDate?: Date) => {
-    if (newDate) setPickedDate(newDate);
-    if (iosDisplay === "compact") onDateChange(newDate);
+    if (!newDate) return;
+    if (iosDisplay === "compact") {
+      onDateChange && onDateChange(newDate);
+      return;
+    }
+
+    setPickedDate(newDate);
   };
 
   const handleAndroidDateChange = (_: any, newDate?: Date) => {
@@ -58,7 +69,7 @@ const DatePicker = ({
     }
   };
 
-  const resetValue = () => onDateChange && onDateChange();
+  const resetValue = () => onDateChange && onDateChange(null);
 
   const toggle = () => {
     setShow(!show);
@@ -86,8 +97,6 @@ const DatePicker = ({
       delay: !show ? animationProperties.delay : 0,
       useNativeDriver: true,
     }).start(show ? toggle : undefined);
-
-    setPickedDate(show && value ? value : pickedDate);
   };
 
   const onDonePress = () => {
