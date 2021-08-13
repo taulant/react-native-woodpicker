@@ -1,4 +1,4 @@
-import React, { useState, useRef, useMemo } from "react";
+import React, { useState, useRef, useMemo, useEffect } from "react";
 import { PickerProps, PickerItem, InputProps, DoneBarProps } from "../types";
 
 import { Animated } from "react-native";
@@ -51,6 +51,16 @@ const Picker = ({
     [backdropAnimation]
   );
 
+  useEffect(() => {
+    const nullableItems = isNullable ? [EMPTY_ITEM, ...items] : items;
+    const itemIndex = nullableItems.findIndex(
+      ({ label }) => label === item?.label
+    );
+    if (itemIndex !== -1) {
+      setSelectedItem(nullableItems[itemIndex]);
+    }
+  }, [item]);
+
   const handleItemChange = (value: PickerItem, index: number) => {
     const nullableItems = isNullable ? [EMPTY_ITEM, ...items] : items;
 
@@ -80,7 +90,7 @@ const Picker = ({
     }
 
     Animated.timing(fadeAnimationValue, {
-      toValue: !show ? animationProperties.opactiy : 0,
+      toValue: !show ? animationProperties.opacity : 0,
       duration: !show ? animationProperties.duration : 0,
       delay: !show ? animationProperties.delay : 0,
       useNativeDriver: true,

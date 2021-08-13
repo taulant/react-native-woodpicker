@@ -14,10 +14,10 @@ const data: Array<PickerItem> = [
 ];
 
 const App = (): JSX.Element => {
-  const [pickedDate, setPickedDate] = useState<Date>();
+  const [pickedDate, setPickedDate] = useState<Date | null>(null);
   const [pickedData, setPickedData] = useState<PickerItem>();
 
-  const handleDateChange = (date?: Date) => setPickedDate(date);
+  const handleDateChange = (date: Date | null) => setPickedDate(date);
 
   const resetDate = () => setPickedDate(new Date());
   const resetPicker = () => setPickedData(data[1]);
@@ -52,9 +52,9 @@ const App = (): JSX.Element => {
         title="Date Picker"
         text={handleText()}
         isNullable
-        iosDisplay="inline"
+        iosDisplay="compact"
         style={styles.pickerStyle}
-        //backdropAnimation={{ opactity: 0 }}
+        //backdropAnimation={{ opacity: 0 }}
         //minDate={new Date(Date.now())}
         //maxDate={new Date(Date.now()+2000000000)}
         //iosPickerMode="date"

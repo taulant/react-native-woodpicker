@@ -8,24 +8,24 @@ export type PickerItem = {
 };
 
 export type PickerProps = {
+  androidCustomProps?: { [key: string]: any };
+  backdropAnimation?: BackdropAnimationType;
+  containerStyle?: ViewStyle;
+  disabled?: boolean;
+  DoneBarComponent?: React.ElementType<DoneBarProps>;
+  doneButtonLabel?: string;
+  InputComponent?: React.ElementType<InputProps>;
+  iosCustomProps?: { [key: string]: any };
+  isNullable?: boolean;
   item?: PickerItem;
   items: Array<PickerItem>;
-  disabled?: boolean;
-  placeholder?: string;
-  title?: string;
-  doneButtonLabel?: string;
-  isNullable?: boolean;
+  mode?: "dialog" | "dropdown";
+  onClose?: () => void;
   onItemChange: (item: PickerItem, index: number) => void;
   onOpen?: () => void;
-  onClose?: () => void;
+  placeholder?: string;
   style?: ViewStyle;
-  containerStyle?: ViewStyle;
   textInputStyle?: TextStyle;
+  title?: string;
   touchableStyle?: ViewStyle;
-  InputComponent?: React.ElementType<InputProps>;
-  DoneBarComponent?: React.ElementType<DoneBarProps>;
-  backdropAnimation?: BackdropAnimationType;
-  mode?: "dialog" | "dropdown";
-  androidCustomProps?: { [key: string]: any };
-  iosCustomProps?: { [key: string]: any };
 };

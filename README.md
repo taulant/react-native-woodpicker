@@ -79,7 +79,7 @@ const ExampleApp = (): JSX.Element => {
         title="Data Picker"
         placeholder="Select Data"
         isNullable
-      //backdropAnimation={{ opactity: 0 }}
+      //backdropAnimation={{ opacity: 0 }}
       //mode="dropdown"
       //isNullable
       //disable
@@ -115,7 +115,7 @@ const ExampleApp = (): JSX.Element => {
         text={handleText()}
         isNullable
         iosDisplay="inline"
-        //backdropAnimation={{ opactity: 0 }}
+        //backdropAnimation={{ opacity: 0 }}
         //minDate={new Date(Date.now())}
         //maxDate={new Date(Date.now()+2000000000)}
         //iosMode="date"
@@ -192,7 +192,7 @@ const ExampleApp = (): JSX.Element => {
 | **togglePicker**                            | (event: GestureResponderEvent) => void | Close Picker (iOS only)                                                 |
 | **text**                                    | string                                 | Input text recieved from the current element                            |
 | **textInputStyle**                          | StyleObj                               | textInputStyle props configured in the picker component                 |
-| **isNullable**                              | boolean                                | isNullable props configured in the picker component (DatePicker only)   |
+| **isNullable**                              | boolean                                | isNullable props configured in the picker component                     |
 | **isCompactHiddenPickerNeeded** (iOS only)  | boolean                                | `true` if you need to use `renderHiddenCompactIOSPicker`                |
 | **renderHiddenCompactIOSPicker** (iOS only) | () => JSX.Element                      | Render the DateTimePicker as a invisible button that overlay his parent |
 
