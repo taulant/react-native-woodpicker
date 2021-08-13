@@ -79,7 +79,7 @@ const ExampleApp = (): JSX.Element => {
         title="Data Picker"
         placeholder="Select Data"
         isNullable
-      //backdropAnimation={{ opactity: 0 }}
+      //backdropAnimation={{ opacity: 0 }}
       //mode="dropdown"
       //isNullable
       //disable
@@ -115,7 +115,7 @@ const ExampleApp = (): JSX.Element => {
         text={handleText()}
         isNullable
         iosDisplay="inline"
-        //backdropAnimation={{ opactity: 0 }}
+        //backdropAnimation={{ opacity: 0 }}
         //minDate={new Date(Date.now())}
         //maxDate={new Date(Date.now()+2000000000)}
         //iosMode="date"

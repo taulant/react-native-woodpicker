@@ -1,5 +1,5 @@
 export type BackdropAnimationType = {
-  opactiy: number;
+  opacity: number;
   duration: number;
   delay: number;
 };

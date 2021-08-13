@@ -54,7 +54,7 @@ const App = (): JSX.Element => {
         isNullable
         iosDisplay="inline"
         style={styles.pickerStyle}
-        //backdropAnimation={{ opactity: 0 }}
+        //backdropAnimation={{ opacity: 0 }}
         //minDate={new Date(Date.now())}
         //maxDate={new Date(Date.now()+2000000000)}
         //iosPickerMode="date"

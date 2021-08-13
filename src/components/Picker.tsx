@@ -80,7 +80,7 @@ const Picker = ({
     }
 
     Animated.timing(fadeAnimationValue, {
-      toValue: !show ? animationProperties.opactiy : 0,
+      toValue: !show ? animationProperties.opacity : 0,
       duration: !show ? animationProperties.duration : 0,
       delay: !show ? animationProperties.delay : 0,
       useNativeDriver: true,
