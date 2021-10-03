@@ -5173,10 +5173,10 @@ react-native-codegen@^0.0.6:
     jscodeshift "^0.11.0"
     nullthrows "^1.1.1"
 
-react-native-woodpicker@0.3.9:
-  version "0.3.9"
-  resolved "https://registry.yarnpkg.com/react-native-woodpicker/-/react-native-woodpicker-0.3.9.tgz#611465b9aa18b6bb4c08a161773f5e9fbf3a0e03"
-  integrity sha512-bzO+Yi/EUwQq5mtOocwekLEszE3BZMw1NskHbW8NHN7qywgvXHOWgLG46VcMaFOyEHtXLJQQc0KNny45g6kXng==
+react-native-woodpicker@0.3.10:
+  version "0.3.10"
+  resolved "https://registry.yarnpkg.com/react-native-woodpicker/-/react-native-woodpicker-0.3.10.tgz#673d9fc3db5edce67e65c0ce44b1d2591bb2d2c2"
+  integrity sha512-JX/4ymTFPa9owsVRFCrzcktUg/KIefOVqewE0nWkciyPoeWcwAAK1FtmT0qiCWYUCYFx+YeGPwjfFVzuDEeRMQ==
 
 react-native@0.64.1:
   version "0.64.1"
@@ -6040,9 +6040,9 @@ through2@^2.0.1:
     xtend "~4.0.1"
 
 tmpl@1.0.x:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/tmpl/-/tmpl-1.0.4.tgz#23640dd7b42d00433911140820e5cf440e521dd1"
-  integrity sha1-I2QN17QtAEM5ERQIIOXPRA5SHdE=
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/tmpl/-/tmpl-1.0.5.tgz#8683e0b902bb9c20c4f726e3c0b69f36518c07cc"
+  integrity sha512-3f0uOEAQwIqGuWW2MVzYg8fV/QNnc/IpuJNG837rLuczAaLVHslWHZQj4IGiEl5Hs3kkbhwL9Ab7Hrsmuj+Smw==
 
 to-fast-properties@^2.0.0:
   version "2.0.0"
