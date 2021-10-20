@@ -29,3 +29,8 @@ export type PickerProps = {
   title?: string;
   touchableStyle?: ViewStyle;
 };
+
+export interface PickerInstance {
+  open: () => void;
+  close: () => void;
+}

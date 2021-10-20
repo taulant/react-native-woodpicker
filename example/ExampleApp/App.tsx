@@ -1,9 +1,9 @@
 import type {PickerItem} from 'react-native-woodpicker';
 
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Platform, StyleSheet, Text, View, Button} from 'react-native';
 
-import {DatePicker, Picker} from 'react-native-woodpicker';
+import {DatePicker, Picker, PickerInstance} from 'react-native-woodpicker';
 
 const data: Array<PickerItem> = [
   {label: 'DataCat', value: 1},
@@ -17,6 +17,7 @@ const App = (): JSX.Element => {
   const [pickedDate, setPickedDate] = useState<Date | null>(null);
   const [pickedData, setPickedData] = useState<PickerItem>();
 
+  const testRef = React.useRef<PickerInstance | null>(null);
   const handleDateChange = (date: Date | null) => setPickedDate(date);
 
   const resetDate = () => setPickedDate(new Date());
@@ -29,13 +30,16 @@ const App = (): JSX.Element => {
   });
 
   const handleText = () => pickedDate?.toDateString?.() ?? 'No value Selected';
+  const openWithRef = () => testRef.current?.open();
 
   return (
     <View style={styles.container}>
       <Text style={styles.welcome}>Welcome to React Native!</Text>
       <Text style={styles.instructions}>To get started, edit App.js</Text>
       <Text style={styles.instructions}>{instructions}</Text>
+      <Button title="Open with Ref" onPress={openWithRef} />
       <Picker
+        ref={testRef}
         item={pickedData}
         items={data}
         onItemChange={setPickedData}

@@ -5,6 +5,7 @@ import DoneBar from "./components/DoneBar";
 import {
   DatePickerProps,
   PickerProps,
+  PickerInstance,
   PickerItem,
   BackdropAnimationType,
   InputProps,
@@ -14,6 +15,7 @@ import {
 export type {
   DatePickerProps,
   PickerProps,
+  PickerInstance,
   PickerItem,
   BackdropAnimationType,
   InputProps,
