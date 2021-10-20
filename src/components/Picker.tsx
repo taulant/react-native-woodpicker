@@ -97,9 +97,19 @@ const Picker = forwardRef(
     };
 
     const toggle = () => {
-      setShow(!show);
-      show ? onOpen?.() : onClose?.();
+      setShow((state) => !state);
     };
+
+    useEffect(() => {
+      if (show && onOpen) {
+        onOpen();
+      }
+
+      if (!show && onClose) {
+        onClose();
+      }
+      // Only execute
+    }, [show]);
 
     const togglePicker = () => {
       if (disabled) {
