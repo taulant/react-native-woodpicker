@@ -3,6 +3,7 @@ import DatePicker from "./components/DatePicker";
 import InputButton from "./components/InputButton";
 import DoneBar from "./components/DoneBar";
 import {
+  DatePickerInstance,
   DatePickerProps,
   PickerProps,
   PickerInstance,
@@ -13,6 +14,7 @@ import {
 } from "./types";
 
 export type {
+  DatePickerInstance,
   DatePickerProps,
   PickerProps,
   PickerInstance,
