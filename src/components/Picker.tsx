@@ -9,7 +9,7 @@ import React, {
 } from "react";
 import { PickerProps, PickerItem, InputProps, DoneBarProps } from "../types";
 
-import { Animated } from "react-native";
+import { Animated, Platform } from "react-native";
 import { Picker as RNPicker } from "@react-native-picker/picker";
 import DefaultInputButton from "./InputButton";
 import DefaultDoneBar from "./DoneBar";
@@ -19,7 +19,7 @@ import { DEFAULT_BACKDROP_ANIMATION } from "../constants/animation";
 import { getAnimatedProperties } from "../helpers/animation";
 import { isIOS } from "../helpers/iphone";
 import { EMPTY_ITEM } from "../constants/item";
-import { PickerInstance } from "../types/picker";
+import { PickerInstance, AndroidPickerInstance } from "../types/picker";
 
 const Picker = forwardRef(
   (
@@ -47,6 +47,9 @@ const Picker = forwardRef(
     }: PickerProps,
     ref: Ref<PickerInstance>
   ): JSX.Element => {
+    const isAndroid = Platform.OS === "android";
+    const androidPickerRef = useRef<AndroidPickerInstance>(null);
+
     const [show, setShow] = useState(false);
     const [selectedItem, setSelectedItem] = useState(
       item
@@ -67,8 +70,18 @@ const Picker = forwardRef(
     useImperativeHandle(
       ref,
       () => ({
-        open: () => setShow(true),
-        close: () => setShow(false),
+        open: () => {
+          setShow(true);
+          if (isAndroid && androidPickerRef.current) {
+            androidPickerRef.current.focus();
+          }
+        },
+        close: () => {
+          setShow(false);
+          if (isAndroid && androidPickerRef.current) {
+            androidPickerRef.current.blur();
+          }
+        },
       }),
       []
     );
@@ -214,7 +227,7 @@ const Picker = forwardRef(
       customProps: androidCustomProps || {},
     };
 
-    return <AndroidPicker {...androidProps} />;
+    return <AndroidPicker ref={androidPickerRef} {...androidProps} />;
   }
 );
 

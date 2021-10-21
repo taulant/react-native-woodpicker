@@ -1,5 +1,6 @@
 import type { TextStyle, ViewStyle } from "react-native";
 import type { InputProps, DoneBarProps, BackdropAnimationType } from "../types";
+import { Picker as RNPicker } from "@react-native-picker/picker";
 
 export type PickerItem = {
   value: any;
@@ -34,3 +35,8 @@ export interface PickerInstance {
   open: () => void;
   close: () => void;
 }
+
+export type AndroidPickerInstance = RNPicker<PickerItem> & {
+  focus: () => void;
+  blur: () => void;
+};
