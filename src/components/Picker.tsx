@@ -112,14 +112,20 @@ const Picker = forwardRef(
     };
 
     useEffect(() => {
-      if (show && onOpen) {
-        onOpen();
+      if (show) {
+        if (isAndroid) {
+          androidPickerRef.current?.focus();
+        }
+        onOpen && onOpen();
       }
 
-      if (!show && onClose) {
-        onClose();
+      if (!show) {
+        if (isAndroid) {
+          androidPickerRef.current?.blur();
+        }
+        onClose && onClose();
       }
-      // Only execute
+      // Only execute when show changes
     }, [show]);
 
     const togglePicker = () => {
