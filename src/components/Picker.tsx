@@ -102,9 +102,7 @@ const Picker = forwardRef(
         nullableItems.find((currentItem) => value === currentItem.value) ||
         EMPTY_ITEM;
 
-      if (!isIOS) {
-        onItemChange(newSelectedItem, index);
-      }
+      onItemChange(newSelectedItem, index);
 
       setSelectedItem(newSelectedItem);
     };
