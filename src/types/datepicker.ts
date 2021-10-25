@@ -39,3 +39,8 @@ export type DatePickerProps = {
   touchableStyle?: ViewStyle;
   value: Date | null;
 };
+
+export interface DatePickerInstance {
+  open: () => void;
+  close: () => void;
+}

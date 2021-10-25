@@ -1,8 +1,9 @@
-import React from "react";
+import React, { forwardRef, Ref } from "react";
 import { View, ViewStyle } from "react-native";
 import { Picker as RNPicker } from "@react-native-picker/picker";
 import { styles } from "../helpers/stylesHelper";
 import { PickerItem } from "../types";
+import { AndroidPickerInstance } from "../types/picker";
 
 export type Props = {
   selectedItem: any;
@@ -18,34 +19,40 @@ export type Props = {
   customProps: { [key: string]: any };
 };
 
-const AndroidPicker = ({
-  selectedItem,
-  disabled,
-  title,
-  mode,
-  renderInput,
-  renderPickerItems,
-  onItemChange,
-  containerStyle,
-  customProps,
-}: Props): JSX.Element => {
-  return (
-    <View style={containerStyle}>
-      {renderInput()}
-      <RNPicker
-        style={styles.androidPickerContainer}
-        prompt={title}
-        // @ts-ignore
-        onValueChange={onItemChange}
-        selectedValue={selectedItem.value}
-        mode={mode || "dialog"}
-        enabled={!disabled}
-        {...customProps}
-      >
-        {renderPickerItems()}
-      </RNPicker>
-    </View>
-  );
-};
+const AndroidPicker = forwardRef(
+  (
+    {
+      selectedItem,
+      disabled,
+      title,
+      mode,
+      renderInput,
+      renderPickerItems,
+      onItemChange,
+      containerStyle,
+      customProps,
+    }: Props,
+    ref: Ref<AndroidPickerInstance>
+  ): JSX.Element => {
+    return (
+      <View style={containerStyle}>
+        {renderInput()}
+        <RNPicker
+          ref={ref}
+          style={styles.androidPickerContainer}
+          prompt={title}
+          // @ts-ignore
+          onValueChange={onItemChange}
+          selectedValue={selectedItem.value}
+          mode={mode || "dialog"}
+          enabled={!disabled}
+          {...customProps}
+        >
+          {renderPickerItems()}
+        </RNPicker>
+      </View>
+    );
+  }
+);
 
 export default AndroidPicker;
