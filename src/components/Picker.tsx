@@ -170,6 +170,9 @@ const Picker = forwardRef(
       if (item && item.label) {
         return item.label;
       }
+      if (!isNullable && selectedItem.label) {
+        return selectedItem.label;
+      }
       return placeholder;
     };
 

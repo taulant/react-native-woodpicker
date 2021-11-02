@@ -78,7 +78,7 @@ const ExampleApp = (): JSX.Element => {
         onItemChange={setPickedData}
         title="Data Picker"
         placeholder="Select Data"
-        isNullable
+        isNullable={false}
       //backdropAnimation={{ opacity: 0 }}
       //mode="dropdown"
       //isNullable
@@ -113,7 +113,7 @@ const ExampleApp = (): JSX.Element => {
         onDateChange={handleDateChange}
         title="Date Picker"
         text={handleText()}
-        isNullable
+        isNullable={false}
         iosDisplay="inline"
         //backdropAnimation={{ opacity: 0 }}
         //minDate={new Date(Date.now())}
