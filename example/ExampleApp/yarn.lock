@@ -5337,10 +5337,10 @@ react-native-codegen@^0.0.7:
     jscodeshift "^0.11.0"
     nullthrows "^1.1.1"
 
-react-native-woodpicker@^0.3.13:
-  version "0.3.13"
-  resolved "https://registry.yarnpkg.com/react-native-woodpicker/-/react-native-woodpicker-0.3.13.tgz#4c63654a1394225d12097f26699696258d5b6704"
-  integrity sha512-Zx97cjwLrGmZJN91evzETTeZt4YIcTByKARQ3HOqKrODwz1GN8zWsNQgL//dP5iDXcn77zMX4TljGxH+/mldGA==
+react-native-woodpicker@^0.3.14:
+  version "0.3.14"
+  resolved "https://registry.yarnpkg.com/react-native-woodpicker/-/react-native-woodpicker-0.3.14.tgz#1333b3c2db20e0fcad7aef7f88ef93417274f1dd"
+  integrity sha512-V6kJVPsIAGNLp6TzRjvo7qDIz9b6DbbJtF8ZVeYFFEmXAoQkam5Z9B4j0PRYGiV0nw4Cd6c2DJNo5hAueGtS+Q==
 
 react-native@0.66.1:
   version "0.66.1"
