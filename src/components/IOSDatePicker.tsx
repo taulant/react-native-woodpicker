@@ -47,6 +47,7 @@ const IOSDatePicker = ({
   if (Number(Platform.Version) >= 14 && display === "compact") {
     return renderInput(() => (
       <DateTimePicker
+        display={display}
         style={[styles.hiddenDateTimePicker, iosCompactHiddenStyle]}
         disabled={disabled}
         {...pickerProps}
