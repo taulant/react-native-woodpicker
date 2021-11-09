@@ -6,6 +6,7 @@ export type PickerItem = {
   value: any;
   label: string;
   color?: string;
+  fontFamily?: string;
 };
 
 export type PickerProps = {
@@ -29,6 +30,8 @@ export type PickerProps = {
   textInputStyle?: TextStyle;
   title?: string;
   touchableStyle?: ViewStyle;
+  itemFontFamily?: string;
+  itemColor?: string;
 };
 
 export interface PickerInstance {
