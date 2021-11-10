@@ -39,6 +39,8 @@ const Picker = forwardRef(
       containerStyle,
       textInputStyle,
       touchableStyle,
+      itemFontFamily,
+      itemColor,
       InputComponent,
       DoneBarComponent,
       backdropAnimation = DEFAULT_BACKDROP_ANIMATION,
@@ -161,6 +163,10 @@ const Picker = forwardRef(
             label={current.label}
             value={current.value}
             key={current.label}
+            fontFamily={
+              current.fontFamily ? current.fontFamily : itemFontFamily
+            }
+            color={current.color ? current.color : itemColor}
           />
         );
       });
