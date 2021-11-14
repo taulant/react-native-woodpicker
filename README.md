@@ -152,15 +152,17 @@ const ExampleApp = (): JSX.Element => {
 
 ### Picker
 
-| Name                    | type                                       | Required | Description                                       |
-| ----------------------- | ------------------------------------------ | -------- | ------------------------------------------------- |
-| **item**                | PickerItem ({ label: string, value: any }) | true     | Configure the current selected item               |
-| **placeholder**         | string                                     | false    | Configure the picker label if no item is selected |
-| **onItemChange**        | (item: PickerItem, index: number) => void; | true     | Add listener on change event                      |
-| **items**               | Array<PickerItem>                          | true     | Configure the list of available items             |
-| **mode** (Android Only) | "dialog" or "dropdown"                     | false    | Configure the android picker mode                 |
+| Name                    | type                                       | Required | Description                                                                              |
+| ----------------------- | ------------------------------------------ | -------- | ---------------------------------------------------------------------------------------- |
+| **item**                | PickerItem ({ label: string, value: any }) | true     | Configure the current selected item                                                      |
+| **placeholder**         | string                                     | false    | Configure the picker label if no item is selected                                        |
+| **onItemChange**        | (item: PickerItem, index: number) => void; | true     | Add listener on change event                                                             |
+| **items**               | Array<PickerItem>                          | true     | Configure the list of available items                                                    |
+| **mode** (Android Only) | "dialog" or "dropdown"                     | false    | Configure the android picker mode                                                        |
+| **itemFontFamily**      | string                                     | false    | Configure the default font family for items (each item can have a `fontFamily` property) |
+| **itemColor**           | string                                     | false    | Configure the default color for items (each item can have a `color` property)            |
 
-### DatePicker specific
+### DatePicker
 
 | Name                                  | type                                                                                                                                                              | Required | Description                                         |
 | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | --------------------------------------------------- |
