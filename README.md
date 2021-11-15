@@ -116,8 +116,8 @@ const ExampleApp = (): JSX.Element => {
         isNullable={false}
         iosDisplay="inline"
         //backdropAnimation={{ opacity: 0 }}
-        //minDate={new Date(Date.now())}
-        //maxDate={new Date(Date.now()+2000000000)}
+        //minimumDate={new Date(Date.now())}
+        //maximumDate={new Date(Date.now()+2000000000)}
         //iosMode="date"
         //androidMode="countdown"
         //iosDisplay="spinner"
