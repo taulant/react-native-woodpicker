@@ -16,6 +16,8 @@ export type Props = {
     | ((itemValue: PickerItem, itemIndex: number) => void)
     | undefined;
   containerStyle?: ViewStyle;
+  onBlur: () => void;
+  onFocus: () => void;
   customProps: { [key: string]: any };
 };
 
@@ -29,6 +31,8 @@ const AndroidPicker = forwardRef(
       renderInput,
       renderPickerItems,
       onItemChange,
+      onBlur,
+      onFocus,
       containerStyle,
       customProps,
     }: Props,
@@ -47,6 +51,9 @@ const AndroidPicker = forwardRef(
           mode={mode || "dialog"}
           enabled={!disabled}
           {...customProps}
+          // @ts-ignore
+          onBlur={onBlur}
+          onFocus={onFocus}
         >
           {renderPickerItems()}
         </RNPicker>

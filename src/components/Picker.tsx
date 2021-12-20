@@ -62,6 +62,7 @@ const Picker = forwardRef(
         ? EMPTY_ITEM
         : items[0]
     );
+    const [initialised, setInitialised] = useState(false);
     const fadeAnimationValue = useRef(new Animated.Value(0)).current;
 
     const animationProperties = useMemo(
@@ -74,28 +75,20 @@ const Picker = forwardRef(
       () => ({
         open: () => {
           setShow(true);
-          if (isAndroid && androidPickerRef.current) {
-            androidPickerRef.current.focus();
+          if (isAndroid) {
+            androidPickerRef.current?.focus();
           }
         },
         close: () => {
           setShow(false);
-          if (isAndroid && androidPickerRef.current) {
-            androidPickerRef.current.blur();
+
+          if (isAndroid) {
+            androidPickerRef.current?.blur();
           }
         },
       }),
       []
     );
-    useEffect(() => {
-      const nullableItems = isNullable ? [EMPTY_ITEM, ...items] : items;
-      const itemIndex = nullableItems.findIndex(
-        ({ label }) => label === item?.label
-      );
-      if (itemIndex !== -1) {
-        setSelectedItem(nullableItems[itemIndex]);
-      }
-    }, [item]);
 
     const handleItemChange = (value: PickerItem, index: number) => {
       const nullableItems = isNullable ? [EMPTY_ITEM, ...items] : items;
@@ -109,32 +102,32 @@ const Picker = forwardRef(
       setSelectedItem(newSelectedItem);
     };
 
+    const handleAndroidPickerBlur = () => {
+      setShow(false);
+      androidCustomProps?.onBlur?.();
+    };
+
+    const handleAndroidPickerFocus = () => {
+      setShow(true);
+      androidCustomProps?.onFocus?.();
+    };
+
     const toggle = () => {
       setShow((state) => !state);
     };
-
-    useEffect(() => {
-      if (show) {
-        if (isAndroid) {
-          androidPickerRef.current?.focus();
-        }
-        onOpen && onOpen();
-      }
-
-      if (!show) {
-        if (isAndroid) {
-          androidPickerRef.current?.blur();
-        }
-        onClose && onClose();
-      }
-      // Only execute when show changes
-    }, [show]);
 
     const togglePicker = () => {
       if (disabled) {
         return;
       }
 
+      // Handle Android picker input toggle
+      if (isAndroid) {
+        toggle();
+        return;
+      }
+
+      // Handle iOS and other picker input toggle
       if (!show) {
         toggle();
       }
@@ -146,6 +139,38 @@ const Picker = forwardRef(
         useNativeDriver: true,
       }).start(show ? toggle : undefined);
     };
+
+    useEffect(() => {
+      setInitialised(true);
+    }, []);
+
+    useEffect(() => {
+      if (show && initialised) {
+        onOpen && onOpen();
+        if (isAndroid) {
+          androidPickerRef.current?.focus();
+        }
+      }
+
+      if (!show && initialised) {
+        onClose && onClose();
+        if (isAndroid) {
+          androidPickerRef.current?.blur();
+        }
+      }
+
+      // Only execute when show changes
+    }, [show]);
+
+    useEffect(() => {
+      const nullableItems = isNullable ? [EMPTY_ITEM, ...items] : items;
+      const itemIndex = nullableItems.findIndex(
+        ({ label }) => label === item?.label
+      );
+      if (itemIndex !== -1) {
+        setSelectedItem(nullableItems[itemIndex]);
+      }
+    }, [item]);
 
     const onDonePress = () => {
       togglePicker();
@@ -238,6 +263,8 @@ const Picker = forwardRef(
       ...pickerProps,
       mode,
       customProps: androidCustomProps || {},
+      onBlur: handleAndroidPickerBlur,
+      onFocus: handleAndroidPickerFocus,
     };
 
     return <AndroidPicker ref={androidPickerRef} {...androidProps} />;

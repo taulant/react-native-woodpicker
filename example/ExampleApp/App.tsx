@@ -53,7 +53,7 @@ const App = (): JSX.Element => {
         placeholder="Select Data"
         style={styles.pickerStyle}
         isNullable
-        //androidPickerMode="dropdown"
+        //mode="dropdown"
       />
       <Button title="Set Value" onPress={resetPicker} />
       <Button title="Open Picker (Ref)" onPress={openPickerWidthRef} />
@@ -68,8 +68,8 @@ const App = (): JSX.Element => {
         //backdropAnimation={{ opacity: 0 }}
         //minDate={new Date(Date.now())}
         //maxDate={new Date(Date.now()+2000000000)}
-        //iosPickerMode="date"
-        //androidPickerMode="spinner"
+        //iosMode="date"
+        //androidMode="spinner"
         //locale="fr"
       />
       <Button title="Set Today" onPress={resetDate} />
