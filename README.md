@@ -110,7 +110,7 @@ const ExampleApp = (): JSX.Element => {
     <View>
       <DatePicker
         value={pickedDate}
-        onDateChange={handleDateChange}
+        onDateChange={setPickedDate}
         title="Date Picker"
         text={handleText()}
         isNullable={false}
